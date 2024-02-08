@@ -93,16 +93,16 @@ pageLanguage: 'en'}, 'google_translate_element');
         <ul class="dropdown-menu">
           <li><a href="Deposit.html">Deposit</a></li>
           
-          <li><a href="Deposit history.html">Deposits History</a></li>
+          <li><a href="Deposit_history.html">Deposits History</a></li>
         </ul>
       </li>
       <li><span class="divider"></span></li>
-      <li><a href="Earning History.html"><span><i class="fas fa-history"></i></span>Earnings History</a></li>
+      <li><a href="Earning_History.html"><span><i class="fas fa-history"></i></span>Earnings History</a></li>
       <li><span class="divider"></span></li>
       <li class="dropdown"><a href="Withdraw.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span><i class="far fa-credit-card"></i></span>Withdraw</a>
         <ul class="dropdown-menu">
           <li><a href="Withdraw.html">Withdraw</a></li>
-          <li><a href="Withdrawal History.html">Withdrawals History</a></li>
+          <li><a href="Withdrawal_History.html">Withdrawals History</a></li>
         </ul>
       </li>
       <li><span class="divider"></span></li>
@@ -113,7 +113,7 @@ pageLanguage: 'en'}, 'google_translate_element');
         </ul>
       </li>
       <li><span class="divider"></span></li>
-      <li><a href="Profile settings.html"><span><i class="fas fa-tools"></i></span>Settings</a></li>
+      <li><a href="Profile_settings.html"><span><i class="fas fa-tools"></i></span>Settings</a></li>
     </ul>
   </div>
 </div>
@@ -191,7 +191,7 @@ var cps = {};
       }
   </style>
 
-<form method=post name="spendform"><input type="hidden" name="form_id" value="17065385546071"><input type="hidden" name="form_token" value="8674a6a1067aa9209a4cd24b7ded9497">
+<form method=post >
 <input type=hidden name=a value=deposit>
 <input type=hidden name=a value=deposit>
   <div class="planitems accpage">
@@ -210,7 +210,7 @@ var cps = {};
           <li>Referral Commission 10%</li>
             </ul>
           </div>
-			<div class="plandays"><input type="radio" name="h_id" value='1' id="r1" onclick="updateCompound()" checked>
+			<div class="plandays"><input type="radio" name="h_id" value='1' id="r1" onclick="selectSliver()" checked>
 			<label class="radio" for="r1">Select</label></div>
 		
 	
@@ -231,7 +231,7 @@ var cps = {};
           <li>Referral Commission 10%</li>
             </ul>
           </div>
-		<div class="plandays"><input type="radio" name="h_id" value='2' id="r2" onclick="updateCompound()">
+		<div class="plandays"><input type="radio" name="h_id" value='2' id="r2" onclick="selectGold()">
         <label class="radio" for="r2">Select</label></div>
 		
     </div>
@@ -250,7 +250,7 @@ var cps = {};
           <li>Referral Commission 10%</li>
             </ul>
           </div>
-        <div class="plandays"><input type="radio" name="h_id" value='3' id="r3" onclick="updateCompound()">
+        <div class="plandays"><input type="radio" name="h_id" value='3' id="r3" onclick="selectPlatinum()">
         <label class="radio" for="r3">Select</label></div>
 	
     </div>
@@ -271,7 +271,7 @@ var cps = {};
           <li>Referral Commission 10%</li>
             </ul>
           </div>
- <div class="plandays"><input type="radio" name="h_id" value='4' id="r4" onclick="updateCompound()">
+ <div class="plandays"><input type="radio" name="h_id" value='4' id="r4" onclick="selectDiamond()">
         <label class="radio" for="r4">Select</label></div>
 		
 		
@@ -295,7 +295,7 @@ var cps = {};
           <li>Referral Commission 10%</li>
             </ul>
           </div>
-			 <div class="plandays"><input type="radio" name="h_id" value='5' id="r5" onclick="updateCompound()" >
+			 <div class="plandays"><input type="radio" name="h_id" value='5' id="r5" onclick="selectVip()" >
         <label class="radio" for="r5">Select</label></div>
 		
 	
@@ -377,7 +377,7 @@ cps[] = ;
 <table cellspacing=0 cellpadding=2 border=0 width="100%">
 <tr>
  <td width="30%"><strong>Your account balance ($):</strong></td>
- <td width="70%" align=right>$0.00</td>
+ <td width="70%" align=right id="balance"></td>
 </tr>
 <tr><td>&nbsp;</td>
  <td align=right>
@@ -387,7 +387,9 @@ cps[] = ;
 </tr>
 <tr>
  <td><strong>Amount to Spend ($):</strong></td>
- <td align=right><input type=text name=amount value='50.00' class=inpts size=15 style="text-align:right;"></td>
+ <td align=right>
+  <input type=text name=amount id="amount" value='50.00' class=inpts size=15 style="text-align:right;">
+</td>
 </tr>
 <tr id="coumpond_block" style="display:none">
  <td>Compounding(%):</td>
@@ -410,13 +412,13 @@ cps[] = ;
                        
 					   
                                                                                                                                                                                                     <tr>
-     <td><div class="payment-container"><input type=radio name=type value="process_1000" >Spend funds from Bitcoin</div></td>
+     <td><div class="payment-container"><input type=radio name=type value="process_1000" onclick="selectBtc()">Spend funds from Bitcoin</div></td>
     </tr>
                          <tr>
-     <td><div class="payment-container"><input type=radio name=type value="process_1006" >Spend funds from USDT (TRC 20)</div></td>
+     <td><div class="payment-container"><input type=radio name=type value="process_1006" onclick="selectTrx()">Spend funds from USDT (TRC 20)</div></td>
     </tr>
           <tr>
-     <td><div class="payment-container"><input type=radio name=type value="process_1007" >Spend funds from TRX</div></td>
+     <td><div class="payment-container"><input type=radio name=type value="process_1007" onclick="selectTrx()">Spend funds from TRX</div></td>
     </tr>
    
                           
@@ -427,23 +429,123 @@ cps[] = ;
               </tr>
             </tbody>
 </table>
-<table width="100%" border=0 cellpadding=2 cellspacing=0>
-<tr>
- <td colspan=2><input type=submit value="Spend" class=sbmt></td>
-</tr></table>
+
+
 </div>
 </form>
 
-<script language=javascript>
-for (i = 0; i<document.spendform.type.length; i++) {
-  if ((document.spendform.type[i].value.match(/^process_/))) {
-    document.spendform.type[i].checked = true;
-    break;
-  }
-}
-updateCompound();
-</script>
+<table width="100%" border=0 cellpadding=2 cellspacing=0>
+  <tr>
+   <td colspan=2>
+    <input type=submit value="Spend" class=sbmt onclick="procced()">
+    </td>
+  </tr>
+</table>
 
+
+
+
+
+<script>
+    
+  function updateCompound() {
+      console.log("premium")
+      let inputElement = document.getElementById("amount");
+      inputElement.value = "100000";
+      localStorage.setItem("amount", 100000);
+      localStorage.setItem("plan", "Ambassador");
+      localStorage.setItem("percent", 50);
+      localStorage.setItem("time", "One Week");
+
+
+  } 
+  function selectSliver() {
+      console.log("basic")
+      let inputElement = document.getElementById("amount");
+      inputElement.value = "50";
+      localStorage.setItem("amount", 50);
+      localStorage.setItem("plan", "Sliver");
+      localStorage.setItem("percent", 25);
+      localStorage.setItem("time", "24 hours");
+
+  }   
+  function selectGold() {
+      console.log("basic")
+      let inputElement = document.getElementById("amount");
+      inputElement.value = "500";
+      localStorage.setItem("amount", 500);
+      localStorage.setItem("plan", "Gold");
+      localStorage.setItem("percent", 50);
+      localStorage.setItem("time", "48 hours");
+
+
+  }  
+  function selectPlatinum() {
+      console.log("basic")
+      let inputElement = document.getElementById("amount");
+      inputElement.value = "4000";
+      localStorage.setItem("amount", 4000);
+      localStorage.setItem("plan", "Platinum");
+      localStorage.setItem("percent", 75);
+      localStorage.setItem("time", "72 hours");
+
+  }  
+  function selectDiamond() {
+      console.log("basic")
+      let inputElement = document.getElementById("amount");
+      inputElement.value = "10000";
+      localStorage.setItem("amount", 10000);
+      localStorage.setItem("plan", "Diamond");
+      localStorage.setItem("percent", 100);
+      localStorage.setItem("time", "96 hours");
+
+  }  
+  function selectVip() {
+      console.log("basic")
+      let inputElement = document.getElementById("amount");
+      inputElement.value = "20000";
+      localStorage.setItem("amount", 20000);
+      localStorage.setItem("plan", "Vip");
+      localStorage.setItem("percent", 50);
+      localStorage.setItem("time", "120 hours");
+
+  }   
+  
+let inputElement = document.getElementById("amount");
+console.log(inputElement.value);
+inputElement.addEventListener("input", function() {
+      // Get the current value of the input field
+  var inputValue = inputElement.value;
+  console.log(inputValue)
+  localStorage.setItem("formAmount", inputValue);
+
+
+});
+
+  
+  function selectGolden() {
+      console.log("golden")
+      let inputElement = document.getElementById("amount");
+      inputElement.value = "20000";
+      localStorage.setItem("amount", 45000);
+  } 
+
+  function selectBtc() {
+      console.log("btc")
+      localStorage.setItem("payment", "btc");
+  } 
+
+ 
+  function selectTrx() {
+      console.log("trx")
+      localStorage.setItem("payment", "trx");
+  } 
+
+  function procced() {
+      window.location.href = "payment.html";
+      console.log("clicked")
+  }   
+</script>
 
 
 
@@ -3314,4 +3416,9 @@ updateCompound();
         }
     </script>
    <script src="//code.tidio.co/zhq43avsfrtvsfvm9nplmpnoku4urjq5.js" async></script>
+   
+   <script src="js/deposit.js"></script>
+
+   
+
 </html>

@@ -41,9 +41,10 @@ document.getElementById('login').addEventListener('submit', function(event) {
       // Simulated successful login
       console.log('Login successful:', data);
       // Store the authentication status in localStorage
-      localStorage.setItem("globalbits", "true");
-      localStorage.setItem("gbits_id", formData.get('username'));
-  
+      localStorage.setItem("gtraders", "true");
+      localStorage.setItem("gtraders_id", formData.get('username')); 
+      localStorage.getItem("formAmount", 0);
+ 
       // Redirect to the dashboard upon successful login
       window.location.href = 'dashboard.html';
     })
