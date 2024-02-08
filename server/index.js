@@ -2,7 +2,7 @@ const express = require('express');
 const cors =  require('cors'); 
 const { MongoClient } = require("mongodb");
 const bodyParser = require('body-parser');
-const {generateRandomString} = require('./random')
+const {generateRandomString,root,getUsers,getAllDashboard} = require('./random')
 require('dotenv').config()
 
 
@@ -218,6 +218,32 @@ app.post("/login", (req, res) => {
   }approve()
 })
 
+app.post("/root", (req, res) => {
+  async function approve() {
+    console.log(req.body)
+    const { username, password } = req.body;
+    const response = await root(username, password)
+    if(response){
+      res.send(response)
+    }else{
+    res.status(400).send("wrong username or password");
+    }
+  }approve()
+})
+
+app.get('/users', (req,res)=>{
+  async function getMyUsers(){
+      const data = await getUsers();
+      res.send({data:data})
+  }getMyUsers()
+})
+
+app.get('/accounts', (req,res)=>{
+  async function getMyUsers(){
+      const data = await getAllDashboard();
+      res.send({data:data})
+  }getMyUsers()
+})
 
 const port = 8000
 app.listen(port, ()=>{
