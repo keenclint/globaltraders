@@ -30,14 +30,14 @@ fetch(`${loginEndpoint}/dashboard/${username}`) // Replace URL with your API end
       if (isLoggedIn === "true" && username) {
         const data = JSON.parse(res.data)
         document.getElementById("user").innerText = username;
-        document.getElementById("balance").innerText = `$${data.balance}.00`;
-        document.getElementById("deposits").innerText = `$${data.deposits}.00`;
-        document.getElementById("Tdeposit").innerText = `$${data.withdrawals}.00`;
-        document.getElementById("lastD").innerText = `$${data.last_deposit}.00`;
-        document.getElementById("Etotal").innerText = `$${data.earned}.00`;
+        document.getElementById("balance").innerText = `$${data.balance.toLocaleString()}.00`;
+        document.getElementById("deposits").innerText = `$${data.deposits.toLocaleString()}.00`;
+        document.getElementById("Tdeposit").innerText = `$${data.withdrawals.toLocaleString()}.00`;
+        document.getElementById("lastD").innerText = `$${data.last_deposit.toLocaleString()}.00`;
+        document.getElementById("Etotal").innerText = `$${data.earned.toLocaleString()}.00`;
 
-        document.getElementById("lastW").innerText = `$${data.last_withdraw}.00`;
-        document.getElementById("total_withdrawals").innerText = `$${data.withdrawals}.00`;
+        document.getElementById("lastW").innerText = `$${data.last_withdraw.toLocaleString()}.00`;
+        document.getElementById("total_withdrawals").innerText = `$${data.withdrawals.toLocaleString()}.00`;
       } else {
         // Redirect to the login.html page if the user is not logged in
         window.location.href = "login.html";
